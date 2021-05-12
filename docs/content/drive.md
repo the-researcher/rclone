@@ -233,18 +233,31 @@ If you ever need to remove access, press the "Delete service
 account key" button.
 
 ##### 2. Allowing API access to example.com Google Drive #####
-  - Go to example.com's admin console
-  - Go into "Security" (or use the search bar)
-  - Select "Show more" and then "Advanced settings"
-  - Select "Manage API client access" in the "Authentication" section
-  - In the "Client Name" field enter the service account's
-"Client ID" - this can be found in the Developer Console under
-"IAM & Admin" -> "Service Accounts", then "View Client ID" for
-the newly created service account.
-It is a ~21 character numerical string.
-  - In the next field, "One or More API Scopes", enter
-`https://www.googleapis.com/auth/drive`
-to grant access to Google Drive specifically.
+  - Go to example.com's [Admin Console](https://admin.google.com).
+  - Click on "Security"
+  - Scroll down, and click on "API controls"
+  - Once the "API controls" page has loaded, click on "Manage Third-Party App Access" in the "Overview" section
+  - Click on "Configure new app ▼", and click on "OAuth App Name Or Client ID"
+
+In a new window or tab, go to the [Google Developer Console](https://console.cloud.google.com):
+  - In the upper left-hand corner, click on the burger menu (3 horizontal lines)
+  - Hover over "IAM & Admin," and click "Service Accounts"
+  - Click on the service account you would like to link
+  - Copy the "Unique ID" for this service account
+
+In the first window (where you have loaded the "API controls"):
+  - Paste the Unique ID, and click the "SEARCH" button
+  - If your app name is displayed below, hover over it, and click the "SELECT" button
+  - Click the checkbox by the OAuth Client ID, then click "SELECT"
+  - Select the radio button for "Trusted: Can access all Google Services"
+  - Click "CONFIGURE"
+
+Go back to the "API controls" page
+  - Scroll down, and in the "Domain wide delegation" section, click "MANAGE DOMAIN WIDE DELEGATION"
+  - Click "Add new"
+  - Paste the "Unique ID" for your service account in the "Client ID" field
+  - Paste `https://www.googleapis.com/auth/drive` in the "OAuth scopes (comma-delimited)" field
+  - Click "AUTHORIZE" to grant the service account specific access to Google Drive.
 
 ##### 3. Configure rclone, assuming a new install #####
 
